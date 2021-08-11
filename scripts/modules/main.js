@@ -2,7 +2,7 @@ import { User } from './User.js';
 import { checkUser } from './init-app.js';
 import { activateFoodIcons } from './plate-management.js';
 
-function FoodPlate() {
+let FoodPlate = (() => {
     let user = new User();
     let checkInDate = new Date();
     let returnDate = new Date();
@@ -11,7 +11,7 @@ function FoodPlate() {
         checkInDate: checkInDate,
         returnDate: returnDate,
     };
-}
+})();
 
 function init() {
     console.info('%cmain.js module has loaded', 'color: red');
