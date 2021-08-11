@@ -47,6 +47,7 @@ function createUser() {
 function confirmUser(user) {
     console.log('%cconfirmUser function called', 'color:green');
     DOMnodes.registerHeaderH1.innerText = FoodPlate.user.userName + "'s Food Plate";
+    console.log(createConfirmMessage());
     DOMnodes.registerConfirmDiv.appendChild(createConfirmMessage());
     DOMnodes.registerForm.hidden = true;
     setRegBtnValue('Check In');
@@ -73,29 +74,33 @@ function createReturnToPlateBtn() {
 function createConfirmMessage() {
     let selectedGender = formatGender(FoodPlate.user.userGender);
     // create a constant called confirmDiv. The value of the constant should create a '<div>' element
-
+    const confirmDiv = document.createElement('div');
     // create an attribute of the confirmDiv element that assigns a css class called 'confirmMessage'
-
+    confirmDiv.setAttribute('class','confirmMessage');
     // create a constant called confirmH2userName and assign a value that creates a new '<h2>' element
-
+    const confirmH2userName = document.createElement('h2');
     // give the confirmH2userName a child text node  = `You have successfully registered as: ` followed by the FoodPlate user object's userName property
+    let textNode1 = document.createTextNode(`You have successfully registered as: ${FoodPlate.user.userName}`);
+    confirmH2userName.appendChild(textNode1);
 
     // append the new confirmH2userName element to the confirmDiv element
-
+    confirmDiv.appendChild(confirmH2userName);
     // create a constant called confirmPAge and assign the value that creates a new '<p>' element
-
+    const confirmPage = document.createElement('p');
     // assign the <p> element's a child text node = `Your age group is: ` followed by the FoodPlate user object's ageGroup property
-
+    let textNode2 = document.createTextNode(`Your age group is: ${FoodPlate.user.ageGroup}`);
+    confirmPage.appendChild(textNode2);
     // append the confirmPAge to the confirmDiv
-
+    confirmDiv.appendChild(confirmPage);
     // create a constant called confirmPGender and assign the value that creates a new <p> element
-
+    const confirmGender = document.createElement('p'); 
     // assign the confirmPGender element a child text  node = `Your gender is ` followed by the selectedGender variable declared in the first line of this function
-
+    let textNode3 = document.createTextNode(`Your gender is: ${FoodPlate.user.userGender}`);
+    confirmGender.appendChild(textNode3);
     // append the confirmPGender element to the confirmDiv element
-
+    confirmDiv.appendChild(confirmGender);
     // return the confirmDiv
-
+    return confirmDiv;
 }
 
 function formatGender(gender) {
