@@ -10,8 +10,12 @@ function checkUser() {
     console.info('%cinit-app module has loaded', 'color: red');
     console.log('%ccheckUser function has been called', 'color:green');
     // write conditional for challenge-7 here
-
-
+    if(localStorage.getItem('user')) {
+        getUser();
+    } else {
+        FoodPlate.user.registered = false;  
+    }
+    setRegBtn();
     console.log('%ccheckUser function called - user registered:', 'color:green',  `${FoodPlate.user.registered}`);
 }
 
